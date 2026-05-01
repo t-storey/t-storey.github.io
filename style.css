@@ -1,0 +1,192 @@
+/* Tom Storey — personal site
+   Minimalist academic layout with left sidebar (à la Maximilian Kasy / DiTraglia) */
+
+:root {
+  --text: #222;
+  --muted: #666;
+  --link: #555;
+  --link-hover: #111;
+  --rule: #e5e5e5;
+  --bg: #ffffff;
+  --max-width: 960px;
+  --sidebar-width: 200px;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+/* Header */
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 2.25rem;
+}
+
+.site-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.site-name a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav {
+  display: flex;
+  gap: 1.75rem;
+  font-size: 1rem;
+}
+
+.site-nav a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.site-nav a:hover { color: var(--link-hover); text-decoration: underline; }
+.site-nav a.active { font-weight: 600; }
+
+/* Two-column layout: sidebar + main */
+.layout {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+/* Sidebar */
+.sidebar {
+  font-size: 0.95rem;
+}
+
+.sidebar img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-radius: 4px;
+  background: #f2f2f2;
+  display: block;
+}
+
+.sidebar .name {
+  margin: 0.85rem 0 0.25rem;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+
+.sidebar .roles {
+  margin: 0 0 1rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.sidebar .roles span { display: block; }
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sidebar li a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.sidebar li a:hover { color: var(--link-hover); }
+.sidebar li a:visited { color: var(--link); }
+
+.sidebar svg {
+  flex: 0 0 auto;
+  color: var(--muted);
+}
+
+/* Main content links */
+main a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+main a:hover    { color: var(--link-hover); }
+main a:visited  { color: var(--link); }
+
+main a.link-blue,
+main a.link-blue:visited { color: #0645ad; }
+main a.link-blue:hover   { color: #0b0080; }
+
+main p { margin: 0 0 1rem; }
+
+main h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.75rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+main h3 {
+  font-size: 1.05rem;
+  margin: 1.5rem 0 0.5rem;
+  font-weight: 600;
+}
+
+/* Mobile */
+@media (max-width: 720px) {
+  body { font-size: 16px; }
+  .container { padding: 1.5rem 1rem 2rem; }
+
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .sidebar {
+    max-width: 260px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .sidebar ul {
+    align-items: center;
+  }
+
+  .site-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .site-nav { gap: 1.25rem; }
+}
